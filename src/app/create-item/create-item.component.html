@@ -1,0 +1,52 @@
+&nbsp;
+<div class="container">
+<form [formGroup]="submitForm" (ngSubmit)="onSubmit()" >
+    <div class="form-group">
+      <label for="items" class="form-label">Item</label>
+      <input type="text" class="form-control" id="items" formControlName="items">
+      <small *ngIf="!submitForm.valid && submitForm.touched" class="text-danger">Please enter item name</small>
+    </div>
+    <div class="form-group">
+      <label for="decription" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description" formControlName="description">
+      <small *ngIf="!submitForm.valid && submitForm.touched" class="text-danger">Please enter description</small>
+    </div>
+    <div class="form-group">
+      <label for="date" class="form-label">Date-Bought</label>
+      <input type="date" class="form-control" id="date" formControlName="date">
+      <small *ngIf="!submitForm.valid && submitForm.touched" class="text-danger">Select or enter date</small>
+    </div>
+    <div class="form-group">
+      <label for="stock" class="form-label">Stock</label>
+      <input type="number" min="1" class="form-control" id="stock" formControlName="stock">
+      <small *ngIf="!submitForm.valid && submitForm.touched" class="text-danger">Enter number of stock</small>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!submitForm.valid">Create Item</button>
+  </form>
+
+  &nbsp;&nbsp;
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date-Bought</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of listData;">
+        <td><span>{{data.items}}</span></td>
+        <td><span>{{data.description}}</span></td>
+        <td><span>{{data.date}}</span></td>
+        <td><span>{{data.stock}}</span></td>
+        <td style="text-align: center;"><button type="submit" class="btn btn-success" onclick="addCart()">Add to Cart</button>&nbsp;
+        <button type="submit" class="btn btn-primary" onclick="editNd()">Edit</button>&nbsp;
+        <button type="submit" class="btn btn-primary" onclick="editStock()">Edit Stock</button>&nbsp;
+        <button type="submit" class="btn btn-danger" onclick="removeItem()">Delete</button></td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
